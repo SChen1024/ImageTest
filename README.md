@@ -16,3 +16,4 @@
 
 1. [ImageShop blog](https://www.cnblogs.com/imageshop/)
 2. [Photo Demon](https://github.com/tannerhelland/PhotoDemon)
+3. [image Shop](https://www.cnblogs.com/imageshop/archive/2011/11/10/2244664.html)

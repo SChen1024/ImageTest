@@ -14,7 +14,7 @@ class ImageTest : public QMainWindow
     Q_OBJECT
 
 public:
-    explicit ImageTest(QWidget *parent = 0);
+    explicit ImageTest(QWidget *parent = nullptr);
     ~ImageTest();
 
 private:
