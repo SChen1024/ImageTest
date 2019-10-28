@@ -1,0 +1,451 @@
+﻿<DoxygenTemplates>
+    <!--
+      Templates for Doxygen/JavaDoc/Qt Comment blocks
+      ===============================================
+      These control which entries are added to the doc-comment for each type of code element,
+      and their order.
+      
+      Full documentation can be found in the Atomineer user manual.
+    -->
+    <!-- Global settings for the entry types.
+       These control the style and formatting of the individual types of entries defined in the templates below.
+       Each element here should match one of the entries in your template blocks, and should either match the
+       entry names Atomineer supports (e.g. "summary") or a custom entry type. If you wish to use a different 
+       name in your entries than Atomineer (e.g. you prefer "brief" to "summary", then use the <summary> element
+       and set its _tagName attribute to "brief". You can also add a comma-separated list of _aliases to allow
+       for conversions from legacy comments.
+
+       Primary settings (see the user manual for more details) are:
+        _optional		true indicates this entry is not to be added by Atomineer, but shuld be preserved
+                false indicates that this entry type is required, so Atomineer should automtaically add it
+        _punctuate		true/false to control automatic punctuation insertion
+        _wordwrap		true/false to control whether word-wrapping is applied to the description
+        _copyFromBase	true/fase to control whether this type of entry can be copied from base-class documentation
+
+        _tagName		The entry tag you want to use in your documentation, e.g. for Atomineer's "summary" you might
+                prefer to use the tag "description"
+        _aliases		A comma-separated list of other tags that should be considered equivalent (to convert legacy comments)
+    -->
+  <!--  条目类型的全局设置。=""
+       它们控制下面模板中定义的各种条目类型的样式和格式。=""
+       这里的每个元素都应该匹配模板块中的一个条目，并且应该匹配=""
+       条目名称Atomineer支持（例如“摘要”）或自定义条目类型。如果你想使用不同的=""
+       您的条目中的名称不是Atomineer（例如，您更喜欢“简要”到“摘要”，然后使用=""    元素
+           并将其_tagName属性设置为“brief”。您还可以添加逗号分隔的_aliases列表以允许
+           来自遗留评论的转换。
+           主要设置（有关详细信息，请参阅用户手册）包括：
+            _optional true表示Atomineer不会添加此条目，但会保留该条目
+                    false表示此条目类型是必需的，因此Atomineer应自动添加它
+            _punctuate true / false控制自动标点符号插入
+            _wordwrap true / false控制是否将自动换行应用于描述
+            _copyFromBase true / fase控制是否可以从基类文档中复制此类条目
+
+            _tagName您要在文档中使用的条目标记，例如对于Atomineer的“总结”你可能会
+                    更喜欢使用标签“description”
+            _aliases以逗号分隔的其他标记列表，应视为等效（转换旧版注释）
+         -->
+
+  <!-- prototye is a template placeholder for the code element type (fn,method,class,interface,etc) -->
+  <EntrySettings>
+      <prototype _punctuate="false" />
+      <author _punctuate="false" _optional="true" />
+      <copyright _punctuate="false" _optional="true" _aliases="copyright,Copyright,Copy,copy"/>
+      <date _punctuate="false" _optional="true" />
+      <remarks _optional="true" _aliases="remark" />
+      <summary _punctuate="false" _tagName="brief" _aliases="summary,desc,description,details,purpose,short" />
+      <exception _tagName="exception" _aliases="throw,throws" />
+      <param _punctuate="false" _tagName="param" _aliases="parameter" />
+      <typeparam _tagName="tparam" _aliases="typeparam" />
+      <returns _punctuate="false" _tagName="returns" _aliases="return,retval,result,value" />
+      <seealso _punctuate="false" _optional="true" _tagName="sa" _aliases="see,seealso" />
+      <example _punctuate="false" _optional="true" _tagName="example" />
+      <inheritdoc _punctuate="false" _optional="true" _tagName="inheritdoc" />
+    </EntrySettings>
+
+    <!-- Special header and footer pair for .h and .hpp files, which will automatically add an
+         include-once mechanism to the file.-->
+
+  <!-- .h 文件 自动添加 #If endif-->
+    <!--<file _filetypes=".h .hpp" _addfooter="true" _separators="false">
+      <prototype>%projectpathname%</prototype>
+      <_ />
+      <summary />
+      <changelog>%date%    %user%	Created</changelog>
+
+      #ifndef __%leafname%_H__
+      #define __%leafname%_H__
+
+    </file>
+  
+    <filefooter filetypes=".h.hpp" _separators="false">
+      End of %projectpathname%
+      #endif	// __%leafname%_H__
+    </filefooter>-->
+    
+
+  <!-- 文件头  comment 格式-->
+    <file>
+      <prototype>%projectpathname%</prototype>
+      <copyright>S.Chen IRIS Lab </copyright>
+      <_ />
+      <summary />
+      <changelog>%date%    %user%	Created</changelog>
+    </file>
+
+    <file-vb _separators="false">
+      <prototype>%projectpathname%</prototype>
+      <_ />
+      <summary />
+    </file-vb>
+
+    <!-- Free-form text example
+    <file>
+      // project:	%project%
+      // file:	%projectpathname%
+      //
+      // summary:	%fileDescription%
+      //
+      //			%copyright%
+      //
+      //			Date		Developer		Change
+      //			%date%	%user%	Created
+    </file>
+     -->
+
+    <!-- Default plain-text Atomineer file footer. These follow the same form as the file headers above -->
+    <filefooter>
+      End of %projectpathname%
+    </filefooter>
+
+    <filefooter-vb _separators="false">
+      '---------------------------------------------------------------------------------------------------
+      ' End of %projectpathname%
+    </filefooter-vb>
+
+    <!--
+      Comment template for catch-all comments. These are added when the filetype of the document
+      is not one of the core languages that Atomineer can parse to auto-document. The separators
+      and line headers used for each file extension (e.g. .html, .sql) are configured in your
+      Prefs.xml, allowing Atomineer to correctly insert simple "boilerplate" comments into any
+      file format.
+    -->
+    <catchall>
+      <summary />
+      <_ />
+      <author>%user%</author>
+      <date>%date%</date>
+      <_ />
+      <seealso />
+    </catchall>
+
+    <!--
+      Default namespace comment. As with file comments, you can use plain-text or XML commenting for
+      this entry.
+    -->
+    <namespace>
+      <prototype />
+      <_ />
+      <summary />
+      <_ />
+      <seealso />
+    </namespace>
+
+    <typedef>
+      <prototype />
+      <_ />
+      <summary />
+      <_ />
+      <seealso />
+    </typedef>
+
+    <enum>
+      <prototype />
+      <_ />
+      <summary />
+      <_ />
+      <seealso />
+    </enum>
+
+    <bitfield>
+      <prototype />
+      <_ />
+      <summary />
+      <_ />
+      <seealso />
+    </bitfield>
+
+    <struct>
+      <prototype />
+      <_ />
+      <summary />
+      <_ />
+      <author>%user%</author>
+      <date>%date%</date>
+      <_ />
+      <param />
+      <_ />
+      <seealso />
+    </struct>
+
+    <union>
+      <prototype />
+      <_ />
+      <summary />
+      <_ />
+      <author>%user%</author>
+      <date>%date%</date>
+      <_ />
+      <seealso />
+    </union>
+
+    <class>
+      <prototype />
+      <_ />
+      <summary />
+      <_ />
+      <author>%user%</author>
+      <date>%date%</date>
+      <_ />
+      <param />
+      <_ />
+      <seealso />
+    </class>
+
+    <interface>
+      <prototype />
+      <_ />
+      <summary />
+      <_ />
+      <author>%user%</author>
+      <date>%date%</date>
+      <_ />
+      <param />
+      <_ />
+      <seealso />
+    </interface>
+
+    <module>
+      <prototype />
+      <_ />
+      <summary />
+      <_ />
+      <author>%user%</author>
+      <date>%date%</date>
+      <_ />
+      <param />
+      <_ />
+      <seealso />
+    </module>
+
+  <!-- C/C++ #define macro -->
+    <def>	
+      <prototype />
+      <_ />
+      <summary />
+      <_ />
+      <author>%user%</author>
+      <date>%date%</date>
+      <_ />
+      <param />
+      <_ />
+      <seealso />
+    </def>
+  
+  <!-- C++ Function Method 头部声明 -->
+    <method>
+      <prototype />
+      <_ />
+      <summary />
+      <_ />
+      <author>%user%</author>
+      <date>%date%</date>
+      <_ />
+      <exception />
+      <_ />
+      <param />
+      <_ />
+      <returns />
+      <_ />
+      <seealso />
+    </method>
+
+    <property>
+      <prototype />
+      <_ />
+      <summary />
+      <_ />
+      <exception />
+      <_ />
+      <param />
+      <_ />
+      <value />
+      <_ />
+      <seealso />
+    </property>
+
+    <indexer>
+      <prototype />
+      <_ />
+      <summary />
+      <_ />
+      <exception />
+      <_ />
+      <param />
+      <_ />
+      <returns />
+      <_ />
+      <seealso />
+    </indexer>
+
+    <delegate>
+      <prototype />
+      <_ />
+      <summary />
+      <_ />
+      <author>%user%</author>
+      <date>%date%</date>
+      <_ />
+      <exception />
+      <_ />
+      <param />
+      <_ />
+      <returns />
+      <_ />
+      <seealso />
+    </delegate>
+
+    <constructor>
+      <prototype />
+      <_ />
+      <summary />
+      <_ />
+      <author>%user%</author>
+      <date>%date%</date>
+      <_ />
+      <exception />
+      <_ />
+      <param />
+      <_ />
+      <seealso />
+    </constructor>
+
+    <destructor>
+      <prototype />
+      <_ />
+      <summary />
+      <_ />
+      <author>%user%</author>
+      <date>%date%</date>
+      <_ />
+      <exception />
+      <_ />
+      <param />
+      <_ />
+      <seealso />
+    </destructor>
+
+    <finaliser>
+      <prototype />
+      <_ />
+      <summary />
+      <_ />
+      <author>%user%</author>
+      <date>%date%</date>
+      <_ />
+      <exception />
+      <_ />
+      <param />
+      <_ />
+      <seealso />
+    </finaliser>
+
+    <operator>
+      <prototype />
+      <_ />
+      <summary />
+      <_ />
+      <author>%user%</author>
+      <date>%date%</date>
+      <_ />
+      <exception />
+      <_ />
+      <param />
+      <_ />
+      <returns />
+      <_ />
+      <seealso />
+    </operator>
+
+    <eventhandler>
+      <prototype />
+      <_ />
+      <summary />
+      <_ />
+      <author>%user%</author>
+      <date>%date%</date>
+      <_ />
+      <exception />
+      <_ />
+      <param />
+      <_ />
+      <returns />
+      <_ />
+      <seealso />
+    </eventhandler>
+
+    <eventsender>
+      <prototype />
+      <_ />
+      <summary />
+      <_ />
+      <author>%user%</author>
+      <date>%date%</date>
+      <_ />
+      <exception />
+      <_ />
+      <param />
+      <_ />
+      <returns />
+      <_ />
+      <seealso />
+    </eventsender>
+
+    <member>
+      <summary />
+    </member>
+
+    <!-- Templates for methods in abstract classes and interfaces -->
+    <interfacemethod>
+      <prototype />
+      <_ />
+      <summary />
+      <_ />
+      <param />
+      <_ />
+      <returns />
+      <_ />
+      <seealso />
+    </interfacemethod>
+
+    <interfaceproperty>
+      <prototype />
+      <_ />
+      <summary />
+      <_ />
+      <value />
+      <_ />
+      <seealso />
+    </interfaceproperty>
+
+    <interfaceindexer>
+      <prototype />
+      <_ />
+      <summary />
+      <_ />
+      <param />
+      <_ />
+      <returns />
+      <_ />
+      <seealso />
+    </interfaceindexer>
+  </DoxygenTemplates>
