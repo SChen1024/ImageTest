@@ -1,6 +1,5 @@
-#include "imagetest.h"
+#include "../inc/imagetest.h"
 #include "ui_imagetest.h"
-
 
 
 ImageTest::ImageTest(QWidget *parent) :
@@ -13,4 +12,10 @@ ImageTest::ImageTest(QWidget *parent) :
 ImageTest::~ImageTest()
 {
     delete ui;
+}
+
+// 初始化窗口显示
+void ImageTest::Init(void)
+{
+
 }
