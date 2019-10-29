@@ -31,3 +31,4 @@
 *.out
 *.app
 Project/ImageTest/build-Debug/
+!Project/doc/Soft/SSE_Optimization/ImageMaster.dll
