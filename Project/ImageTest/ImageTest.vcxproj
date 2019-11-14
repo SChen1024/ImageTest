@@ -1,0 +1,322 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{111EF089-C5C7-34C6-981F-4E2B9AE0EC7F}</ProjectGuid>
+    <RootNamespace>ImageTest</RootNamespace>
+    <Keyword>Qt4VSv1.0</Keyword>
+    <WindowsTargetPlatformVersion>10.0.14393.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformMinVersion>10.0.14393.0</WindowsTargetPlatformMinVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <PlatformToolset>v140</PlatformToolset>
+    <OutputDirectory>release\</OutputDirectory>
+    <ATLMinimizesCRunTimeLibraryUsage>false</ATLMinimizesCRunTimeLibraryUsage>
+    <CharacterSet>NotSet</CharacterSet>
+    <ConfigurationType>Application</ConfigurationType>
+    <IntermediateDirectory>release\</IntermediateDirectory>
+    <PrimaryOutput>ImageTest</PrimaryOutput>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <PlatformToolset>v140</PlatformToolset>
+    <OutputDirectory>debug\</OutputDirectory>
+    <ATLMinimizesCRunTimeLibraryUsage>false</ATLMinimizesCRunTimeLibraryUsage>
+    <CharacterSet>NotSet</CharacterSet>
+    <ConfigurationType>Application</ConfigurationType>
+    <IntermediateDirectory>debug\</IntermediateDirectory>
+    <PrimaryOutput>ImageTest</PrimaryOutput>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <PropertyGroup Condition="'$(QtMsBuild)'=='' or !Exists('$(QtMsBuild)\qt.targets')">
+    <QtMsBuild>$(MSBuildProjectDirectory)\QtMsBuild</QtMsBuild>
+  </PropertyGroup>
+  <Target Name="QtMsBuildNotFound" BeforeTargets="CustomBuild;ClCompile" Condition="!Exists('$(QtMsBuild)\qt.targets') or !Exists('$(QtMsBuild)\qt.props')">
+    <Message Importance="High" Text="QtMsBuild: could not locate qt.targets, qt.props; project may not build correctly." />
+  </Target>
+  <ImportGroup Condition="Exists('$(QtMsBuild)\qt.props')">
+    <Import Project="$(QtMsBuild)\qt.props" />
+  </ImportGroup>
+  <ImportGroup Label="ExtensionSettings" />
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">release\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(Platform)\$(Configuration)\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">ImageTest</TargetName>
+    <IgnoreImportLibrary Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</IgnoreImportLibrary>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">debug\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(Platform)\$(Configuration)\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">ImageTest</TargetName>
+    <IgnoreImportLibrary Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</IgnoreImportLibrary>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>.\GeneratedFiles;.;"C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt";..\depends\opencv\include;..\depends\opencv\include\opencv;..\depends\opencv\include\opencv2;..\depends\spdlog\include;..\depends\spdlog\include\spdlog;./../depends/tinyxml2//include;..\depends\doctest;..\depends\catch2\include;$(QTDIR)\include;$(QTDIR)\include\QtMultimedia;$(QTDIR)\include\QtQuick;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtQml;$(QTDIR)\include\QtNetwork;$(QTDIR)\include\QtCore;release;\include;$(QTDIR)\mkspecs\win32-msvc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>-Zc:rvalueCast -Zc:inline -Zc:strictStrings -Zc:throwingNew -w34100 -w34189 -w44996 -w44456 -w44457 -w44458 %(AdditionalOptions)</AdditionalOptions>
+      <AssemblerListingLocation>release\</AssemblerListingLocation>
+      <BrowseInformation>false</BrowseInformation>
+      <DebugInformationFormat>None</DebugInformationFormat>
+      <DisableSpecificWarnings>4819;4577;4467;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <ForcedIncludeFiles>code\stdafx.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>code\stdafx.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>$(IntDir)\ImageTest.pch</PrecompiledHeaderOutputFile>
+      <PreprocessorDefinitions>_WINDOWS;UNICODE;_UNICODE;WIN32;WIN64;QT_DEPRECATED_WARNINGS;QT_NO_DEBUG;QT_MULTIMEDIA_LIB;QT_QUICK_LIB;QT_WIDGETS_LIB;QT_GUI_LIB;QT_QML_LIB;QT_NETWORK_LIB;QT_CORE_LIB;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessToFile>false</PreprocessToFile>
+      <ProgramDataBaseFileName>$(IntDir)vc$(PlatformToolsetVersion).pdb</ProgramDataBaseFileName>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <WarningLevel>Level3</WarningLevel>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>$(QTDIR)\lib\qtmain.lib;shell32.lib;D:\Data\Project\ImageTest\Project\depends\opencv\lib\opencv_world341.lib;D:\Data\Project\ImageTest\Project\depends\opencv\lib\opencv_world341d.lib;$(QTDIR)\lib\Qt5Multimedia.lib;$(QTDIR)\lib\Qt5Quick.lib;$(QTDIR)\lib\Qt5Widgets.lib;$(QTDIR)\lib\Qt5Gui.lib;$(QTDIR)\lib\Qt5Qml.lib;$(QTDIR)\lib\Qt5Network.lib;$(QTDIR)\lib\Qt5Core.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(QTDIR)\lib;C:\openssl\lib;C:\Utils\my_sql\mysql-5.6.11-winx64\lib;C:\Utils\postgresql\pgsql\lib;$(QTDIR)\lib;"C:\Program Files (x86)\Windows Kits\10\Lib\10.0.10240.0\ucrt\x64";%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>"/MANIFESTDEPENDENCY:type='win32' name='Microsoft.Windows.Common-Controls' version='6.0.0.0' publicKeyToken='6595b64144ccf1df' language='*' processorArchitecture='*'" %(AdditionalOptions)</AdditionalOptions>
+      <DataExecutionPrevention>true</DataExecutionPrevention>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <IgnoreImportLibrary>true</IgnoreImportLibrary>
+      <LinkIncremental>false</LinkIncremental>
+      <OutputFile>$(OutDir)\ImageTest.exe</OutputFile>
+      <RandomizedBaseAddress>true</RandomizedBaseAddress>
+      <SubSystem>Windows</SubSystem>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <Version>0.2</Version>
+    </Link>
+    <Midl>
+      <DefaultCharType>Unsigned</DefaultCharType>
+      <EnableErrorChecks>None</EnableErrorChecks>
+      <WarningLevel>0</WarningLevel>
+    </Midl>
+    <ResourceCompile>
+      <PreprocessorDefinitions>_WINDOWS;UNICODE;_UNICODE;WIN32;WIN64;QT_DEPRECATED_WARNINGS;QT_NO_DEBUG;QT_MULTIMEDIA_LIB;QT_QUICK_LIB;QT_WIDGETS_LIB;QT_GUI_LIB;QT_QML_LIB;QT_NETWORK_LIB;QT_CORE_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+    <QtMoc>
+      <QTDIR>$(QTDIR)</QTDIR>
+      <InputFile>%(FullPath)</InputFile>
+      <OutputFile>$(Configuration)\moc_%(Filename).cpp</OutputFile>
+      <IncludePath>.\GeneratedFiles;$(QTDIR)\mkspecs/win32-msvc;.;C:/Program Files (x86)/Windows Kits/10/Include/10.0.10240.0/ucrt;D:/Data/Project/ImageTest/Project/depends/opencv/include;D:/Data/Project/ImageTest/Project/depends/opencv/include/opencv;D:/Data/Project/ImageTest/Project/depends/opencv/include/opencv2;D:/Data/Project/ImageTest/Project/depends/spdlog/include;D:/Data/Project/ImageTest/Project/depends/spdlog/include/spdlog;D:/Data/Project/ImageTest/Project/depends/tinyxml2/include;D:/Data/Project/ImageTest/Project/depends/doctest;D:/Data/Project/ImageTest/Project/depends/catch2/include;$(QTDIR)\include;$(QTDIR)\include/QtMultimedia;$(QTDIR)\include/QtQuick;$(QTDIR)\include/QtWidgets;$(QTDIR)\include/QtGui;$(QTDIR)\include/QtANGLE;$(QTDIR)\include/QtQml;$(QTDIR)\include/QtNetwork;$(QTDIR)\include/QtCore;F:\Fxxk\VS2015\VC\INCLUDE;F:\Fxxk\VS2015\VC\ATLMFC\INCLUDE;C:\Program Files (x86)\Windows Kits\10\include\10.0.14393.0\ucrt;C:\Program Files (x86)\Windows Kits\NETFXSDK\4.6.1\include\um;C:\Program Files (x86)\Windows Kits\10\include\10.0.14393.0\shared;C:\Program Files (x86)\Windows Kits\10\include\10.0.14393.0\um;C:\Program Files (x86)\Windows Kits\10\include\10.0.14393.0\winrt</IncludePath>
+      <Define>UNICODE;_UNICODE;WIN32;WIN64;QT_DEPRECATED_WARNINGS;QT_NO_DEBUG;QT_MULTIMEDIA_LIB;QT_QUICK_LIB;QT_WIDGETS_LIB;QT_GUI_LIB;QT_QML_LIB;QT_NETWORK_LIB;QT_CORE_LIB</Define>
+      <CompilerFlavor>msvc</CompilerFlavor>
+      <Include>$(Configuration)/moc_predefs.h</Include>
+      <ExecutionDescription>Moc'ing %(Identity)...</ExecutionDescription>
+      <DynamicSource>output</DynamicSource>
+    </QtMoc>
+    <QtRcc>
+      <QTDIR>$(QTDIR)</QTDIR>
+      <InputFile>%(FullPath)</InputFile>
+      <OutputFile>$(Configuration)\qrc_%(Filename).cpp</OutputFile>
+      <InitFuncName>res</InitFuncName>
+      <Compression>default</Compression>
+      <ExecutionDescription>Rcc'ing %(Identity)...</ExecutionDescription>
+    </QtRcc>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>.\GeneratedFiles;.;"C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt";..\depends\opencv\include;..\depends\opencv\include\opencv;..\depends\opencv\include\opencv2;..\depends\spdlog\include;..\depends\spdlog\include\spdlog;./../depends/tinyxml2//include;..\depends\doctest;..\depends\catch2\include;$(QTDIR)\include;$(QTDIR)\include\QtMultimedia;$(QTDIR)\include\QtQuick;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtQml;$(QTDIR)\include\QtNetwork;$(QTDIR)\include\QtCore;debug;\include;$(QTDIR)\mkspecs\win32-msvc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>-Zc:rvalueCast -Zc:inline -Zc:strictStrings -Zc:throwingNew -w34100 -w34189 -w44996 -w44456 -w44457 -w44458 %(AdditionalOptions)</AdditionalOptions>
+      <AssemblerListingLocation>debug\</AssemblerListingLocation>
+      <BrowseInformation>false</BrowseInformation>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4819;4577;4467;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <ForcedIncludeFiles>code\stdafx.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <Optimization>Disabled</Optimization>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>code\stdafx.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>$(IntDir)\ImageTest.pch</PrecompiledHeaderOutputFile>
+      <PreprocessorDefinitions>_WINDOWS;UNICODE;_UNICODE;WIN32;WIN64;QT_DEPRECATED_WARNINGS;QT_MULTIMEDIA_LIB;QT_QUICK_LIB;QT_WIDGETS_LIB;QT_GUI_LIB;QT_QML_LIB;QT_NETWORK_LIB;QT_CORE_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessToFile>false</PreprocessToFile>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <WarningLevel>Level3</WarningLevel>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <ProgramDataBaseFileName>$(IntDir)vc$(PlatformToolsetVersion).pdb</ProgramDataBaseFileName>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>$(QTDIR)\lib\qtmaind.lib;shell32.lib;D:\Data\Project\ImageTest\Project\depends\opencv\lib\opencv_world341.lib;D:\Data\Project\ImageTest\Project\depends\opencv\lib\opencv_world341d.lib;$(QTDIR)\lib\Qt5Multimediad.lib;$(QTDIR)\lib\Qt5Quickd.lib;$(QTDIR)\lib\Qt5Widgetsd.lib;$(QTDIR)\lib\Qt5Guid.lib;$(QTDIR)\lib\Qt5Qmld.lib;$(QTDIR)\lib\Qt5Networkd.lib;$(QTDIR)\lib\Qt5Cored.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(QTDIR)\lib;C:\openssl\lib;C:\Utils\my_sql\mysql-5.6.11-winx64\lib;C:\Utils\postgresql\pgsql\lib;$(QTDIR)\lib;"C:\Program Files (x86)\Windows Kits\10\Lib\10.0.10240.0\ucrt\x64";%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>"/MANIFESTDEPENDENCY:type='win32' name='Microsoft.Windows.Common-Controls' version='6.0.0.0' publicKeyToken='6595b64144ccf1df' language='*' processorArchitecture='*'" %(AdditionalOptions)</AdditionalOptions>
+      <DataExecutionPrevention>true</DataExecutionPrevention>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreImportLibrary>true</IgnoreImportLibrary>
+      <OutputFile>$(OutDir)\ImageTest.exe</OutputFile>
+      <RandomizedBaseAddress>true</RandomizedBaseAddress>
+      <SubSystem>Windows</SubSystem>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <Version>0.2</Version>
+    </Link>
+    <Midl>
+      <DefaultCharType>Unsigned</DefaultCharType>
+      <EnableErrorChecks>None</EnableErrorChecks>
+      <WarningLevel>0</WarningLevel>
+    </Midl>
+    <ResourceCompile>
+      <PreprocessorDefinitions>_WINDOWS;UNICODE;_UNICODE;WIN32;WIN64;QT_DEPRECATED_WARNINGS;QT_MULTIMEDIA_LIB;QT_QUICK_LIB;QT_WIDGETS_LIB;QT_GUI_LIB;QT_QML_LIB;QT_NETWORK_LIB;QT_CORE_LIB;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+    <QtMoc>
+      <QTDIR>$(QTDIR)</QTDIR>
+      <InputFile>%(FullPath)</InputFile>
+      <OutputFile>$(Configuration)\moc_%(Filename).cpp</OutputFile>
+      <IncludePath>.\GeneratedFiles;$(QTDIR)\mkspecs/win32-msvc;.;C:/Program Files (x86)/Windows Kits/10/Include/10.0.10240.0/ucrt;D:/Data/Project/ImageTest/Project/depends/opencv/include;D:/Data/Project/ImageTest/Project/depends/opencv/include/opencv;D:/Data/Project/ImageTest/Project/depends/opencv/include/opencv2;D:/Data/Project/ImageTest/Project/depends/spdlog/include;D:/Data/Project/ImageTest/Project/depends/spdlog/include/spdlog;D:/Data/Project/ImageTest/Project/depends/tinyxml2/include;D:/Data/Project/ImageTest/Project/depends/doctest;D:/Data/Project/ImageTest/Project/depends/catch2/include;$(QTDIR)\include;$(QTDIR)\include/QtMultimedia;$(QTDIR)\include/QtQuick;$(QTDIR)\include/QtWidgets;$(QTDIR)\include/QtGui;$(QTDIR)\include/QtANGLE;$(QTDIR)\include/QtQml;$(QTDIR)\include/QtNetwork;$(QTDIR)\include/QtCore;F:\Fxxk\VS2015\VC\INCLUDE;F:\Fxxk\VS2015\VC\ATLMFC\INCLUDE;C:\Program Files (x86)\Windows Kits\10\include\10.0.14393.0\ucrt;C:\Program Files (x86)\Windows Kits\NETFXSDK\4.6.1\include\um;C:\Program Files (x86)\Windows Kits\10\include\10.0.14393.0\shared;C:\Program Files (x86)\Windows Kits\10\include\10.0.14393.0\um;C:\Program Files (x86)\Windows Kits\10\include\10.0.14393.0\winrt</IncludePath>
+      <Define>UNICODE;_UNICODE;WIN32;WIN64;QT_DEPRECATED_WARNINGS;QT_MULTIMEDIA_LIB;QT_QUICK_LIB;QT_WIDGETS_LIB;QT_GUI_LIB;QT_QML_LIB;QT_NETWORK_LIB;QT_CORE_LIB</Define>
+      <CompilerFlavor>msvc</CompilerFlavor>
+      <Include>$(Configuration)/moc_predefs.h</Include>
+      <ExecutionDescription>Moc'ing %(Identity)...</ExecutionDescription>
+      <DynamicSource>output</DynamicSource>
+    </QtMoc>
+    <QtRcc>
+      <QTDIR>$(QTDIR)</QTDIR>
+      <InputFile>%(FullPath)</InputFile>
+      <OutputFile>$(Configuration)\qrc_%(Filename).cpp</OutputFile>
+      <InitFuncName>res</InitFuncName>
+      <Compression>default</Compression>
+      <ExecutionDescription>Rcc'ing %(Identity)...</ExecutionDescription>
+    </QtRcc>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="code\src\imagetest.cc" />
+    <ClCompile Include="code\main.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="code\inc\imagetest.h">
+    </QtMoc>
+    <CustomBuild Include="code\stdafx.h">
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">echo /*-------------------------------------------------------------------- &gt;code\stdafx.h.cpp
+if errorlevel 1 goto VCEnd
+echo * Precompiled header source file used by Visual Studio.NET to generate&gt;&gt;code\stdafx.h.cpp
+if errorlevel 1 goto VCEnd
+echo * the .pch file.&gt;&gt;code\stdafx.h.cpp
+if errorlevel 1 goto VCEnd
+echo *&gt;&gt;code\stdafx.h.cpp
+if errorlevel 1 goto VCEnd
+echo * Due to issues with the dependencies checker within the IDE, it&gt;&gt;code\stdafx.h.cpp
+if errorlevel 1 goto VCEnd
+echo * sometimes fails to recompile the PCH file, if we force the IDE to&gt;&gt;code\stdafx.h.cpp
+if errorlevel 1 goto VCEnd
+echo * create the PCH file directly from the header file.&gt;&gt;code\stdafx.h.cpp
+if errorlevel 1 goto VCEnd
+echo *&gt;&gt;code\stdafx.h.cpp
+if errorlevel 1 goto VCEnd
+echo * This file is auto-generated by qmake since no PRECOMPILED_SOURCE was&gt;&gt;code\stdafx.h.cpp
+if errorlevel 1 goto VCEnd
+echo * specified, and is used as the common stdafx.cpp. The file is only&gt;&gt;code\stdafx.h.cpp
+if errorlevel 1 goto VCEnd
+echo * generated when creating .vcxproj project files, and is not used for&gt;&gt;code\stdafx.h.cpp
+if errorlevel 1 goto VCEnd
+echo * command line compilations by nmake.&gt;&gt;code\stdafx.h.cpp
+if errorlevel 1 goto VCEnd
+echo *&gt;&gt;code\stdafx.h.cpp
+if errorlevel 1 goto VCEnd
+echo * WARNING: All changes made in this file will be lost.&gt;&gt;code\stdafx.h.cpp
+if errorlevel 1 goto VCEnd
+echo --------------------------------------------------------------------*/&gt;&gt;code\stdafx.h.cpp
+if errorlevel 1 goto VCEnd
+echo #include "stdafx.h"&gt;&gt;code\stdafx.h.cpp</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Generating precompiled header source file 'code\stdafx.h.cpp' ...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">code\stdafx.h.cpp;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">echo /*-------------------------------------------------------------------- &gt;code\stdafx.h.cpp
+if errorlevel 1 goto VCEnd
+echo * Precompiled header source file used by Visual Studio.NET to generate&gt;&gt;code\stdafx.h.cpp
+if errorlevel 1 goto VCEnd
+echo * the .pch file.&gt;&gt;code\stdafx.h.cpp
+if errorlevel 1 goto VCEnd
+echo *&gt;&gt;code\stdafx.h.cpp
+if errorlevel 1 goto VCEnd
+echo * Due to issues with the dependencies checker within the IDE, it&gt;&gt;code\stdafx.h.cpp
+if errorlevel 1 goto VCEnd
+echo * sometimes fails to recompile the PCH file, if we force the IDE to&gt;&gt;code\stdafx.h.cpp
+if errorlevel 1 goto VCEnd
+echo * create the PCH file directly from the header file.&gt;&gt;code\stdafx.h.cpp
+if errorlevel 1 goto VCEnd
+echo *&gt;&gt;code\stdafx.h.cpp
+if errorlevel 1 goto VCEnd
+echo * This file is auto-generated by qmake since no PRECOMPILED_SOURCE was&gt;&gt;code\stdafx.h.cpp
+if errorlevel 1 goto VCEnd
+echo * specified, and is used as the common stdafx.cpp. The file is only&gt;&gt;code\stdafx.h.cpp
+if errorlevel 1 goto VCEnd
+echo * generated when creating .vcxproj project files, and is not used for&gt;&gt;code\stdafx.h.cpp
+if errorlevel 1 goto VCEnd
+echo * command line compilations by nmake.&gt;&gt;code\stdafx.h.cpp
+if errorlevel 1 goto VCEnd
+echo *&gt;&gt;code\stdafx.h.cpp
+if errorlevel 1 goto VCEnd
+echo * WARNING: All changes made in this file will be lost.&gt;&gt;code\stdafx.h.cpp
+if errorlevel 1 goto VCEnd
+echo --------------------------------------------------------------------*/&gt;&gt;code\stdafx.h.cpp
+if errorlevel 1 goto VCEnd
+echo #include "stdafx.h"&gt;&gt;code\stdafx.h.cpp</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Generating precompiled header source file 'code\stdafx.h.cpp' ...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">code\stdafx.h.cpp;%(Outputs)</Outputs>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="debug\moc_predefs.h.cbt">
+      <FileType>Document</FileType>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR)\mkspecs\features\data\dummy.cpp;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">cl -Bx"$(QTDIR)\bin\qmake.exe" -nologo -Zc:wchar_t -FS -Zc:rvalueCast -Zc:inline -Zc:strictStrings -Zc:throwingNew /wd4819 -Zi -MDd -W3 -w34100 -w34189 -w44996 -w44456 -w44457 -w44458 -wd4577 -wd4467 -E $(QTDIR)\mkspecs\features\data\dummy.cpp 2&gt;NUL &gt;debug\moc_predefs.h</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Generate moc_predefs.h</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">debug\moc_predefs.h;%(Outputs)</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="release\moc_predefs.h.cbt">
+      <FileType>Document</FileType>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(QTDIR)\mkspecs\features\data\dummy.cpp;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">cl -Bx"$(QTDIR)\bin\qmake.exe" -nologo -Zc:wchar_t -FS -Zc:rvalueCast -Zc:inline -Zc:strictStrings -Zc:throwingNew /wd4819 -O2 -MD -W3 -w34100 -w34189 -w44996 -w44456 -w44457 -w44458 -wd4577 -wd4467 -E $(QTDIR)\mkspecs\features\data\dummy.cpp 2&gt;NUL &gt;release\moc_predefs.h</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Generate moc_predefs.h</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">release\moc_predefs.h;%(Outputs)</Outputs>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </CustomBuild>
+    <ClCompile Include="code\stdafx.h.cpp">
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(NOINHERIT)</ForcedIncludeFiles>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">stdafx.h</PrecompiledHeaderFile>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(NOINHERIT)</ForcedIncludeFiles>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">stdafx.h</PrecompiledHeaderFile>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="code\ui\image.png" />
+    <QtRcc Include="code\ui\res.qrc">
+    </QtRcc>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="code\ui\image.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include=".\ImageTest_resource.rc" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">
+    <Import Project="$(QtMsBuild)\qt.targets" />
+  </ImportGroup>
+  <ImportGroup Label="ExtensionTargets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties Qt5Version_x0020_x64="QT5.11.1" />
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

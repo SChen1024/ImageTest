@@ -37,3 +37,5 @@ Project/ImageTest/build-Debug/
 Project/ImageTest/debug/*
 Project/ImageTest/release/*
 Project/ImageTest/x64/*
+Project/ImageTest/logs/*
+Project/Other/*
