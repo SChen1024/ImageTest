@@ -6,6 +6,9 @@
 
 QT       += core gui
 
+QT  += multimedia       # 媒体文件支持
+QT  += quick qml        # qml 支持
+
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET = ImageTest
@@ -13,17 +16,21 @@ TEMPLATE = app
 
 # add  c11 支持
 CONFIG += c++11
+CONFIG += console       # 打开命令行调试
 
 # Add  precompile header
 CONFIG += precompile_header
 PRECOMPILED_HEADER = code/stdafx.h
+# 禁止 4819 警告   代码编码 问题
+QMAKE_CXXFLAGS += /wd"4819"
 
-# add version
+message("==========Start Generate Project==========")
 
 # 版本信息
 VERSION = 0.2.9
 # 图标
-# RC_ICONS = Code/ui/icon/Panorama.ico
+# RC_ICONS = code/ui/Panorama.png  # 图标
+
 #名称
 QMAKE_TARGET_COMPANY = "S.Chen"
 
@@ -35,45 +42,74 @@ QMAKE_TARGET_COPYRIGHT = "Copyright S.Chen. All rights reserved."
 # 中文（简体）
 RC_LANG = 0x0004
 
-
-
 # The following define makes your compiler emit warnings if you use
 # any feature of Qt which has been marked as deprecated (the exact warnings
 # depend on your compiler). Please consult the documentation of the
 # deprecated API in order to know how to port your code away from it.
 DEFINES += QT_DEPRECATED_WARNINGS
 
-# You can also make your code fail to compile if you use deprecated APIs.
-# In order to do so, uncomment the following line.
-# You can also select to disable deprecated APIs only up to a certain version of Qt.
-#DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
-# add  opencv lib
+message("App:  $$TARGET, Version: $$VERSION");
 
-win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../depends/opencv/lib/ -lopencv_world341
-else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../depends/opencv/lib/ -lopencv_world341d
-else:unix:!macx: LIBS += -L$$PWD/../depends/opencv/lib/ -lopencv_world341
+# 在 win32 情况下编译
+win32 {
+    message("Using Win32 Config")
+    # win10   出现出现 找不到 标准文件 需要指定路径
+    INCLUDEPATH += "C:/Program Files (x86)/Windows Kits/10/Include/10.0.10240.0/ucrt"
+    LIBS += -L"C:/Program Files (x86)/Windows Kits/10/Lib/10.0.10240.0/ucrt/x64"
 
-INCLUDEPATH += $$PWD/../depends/opencv/include
-DEPENDPATH += $$PWD/../depends/opencv/include
+    DEPEND_PATH  = $$PWD/../depends
+    # opencv  库路径
+    OPENCV_PATH = $$DEPEND_PATH/opencv
+    OPENCV_INC  = $$OPENCV_PATH/include \
+                  $$OPENCV_PATH/include/opencv \
+                  $$OPENCV_PATH/include/opencv2
+    OPENCV_LIB  = $$OPENCV_PATH/lib/opencv_world341.lib \
+                  $$OPENCV_PATH/lib/opencv_world341d.lib
 
-win32-g++:CONFIG(release, debug|release): PRE_TARGETDEPS += $$PWD/../depends/opencv/lib/libopencv_world341.a
-else:win32-g++:CONFIG(debug, debug|release): PRE_TARGETDEPS += $$PWD/../depends/opencv/lib/libopencv_world341d.a
-else:win32:!win32-g++:CONFIG(release, debug|release): PRE_TARGETDEPS += $$PWD/../depends/opencv/lib/opencv_world341.lib
-else:win32:!win32-g++:CONFIG(debug, debug|release): PRE_TARGETDEPS += $$PWD/../depends/opencv/lib/opencv_world341d.lib
-else:unix:!macx: PRE_TARGETDEPS += $$PWD/../depends/opencv/lib/libopencv_world341.a
+    SPDLOG_PATH =  $$DEPEND_PATH/spdlog/
+    SPDLOG_INC  =  $$SPDLOG_PATH/include \
+                   $$SPDLOG_PATH/include/spdlog
+
+    DOCTEST_PATH = $$DEPEND_PATH/doctest
+    DOCTEST_INC  = $$DOCTEST_PATH
+
+    CATCH_PAYH   = $$DEPEND_PATH/catch2
+    CATCH_INC   = $$CATCH_PAYH/include
+
+    TINYXML_PATH = $$DEPEND_PATH/tinyxml2/
+    TINYXML_INC  = $$TINYXML_PATH/include
+
+
+    INCLUDEPATH += $$OPENCV_INC \
+                   $$SPDLOG_INC \
+                   $$TINYXML_INC \
+                   $$DOCTEST_INC  \
+                   $$CATCH_INC
+
+    LIBS +=     $$OPENCV_LIB \
+                $$QWT_LIB
+}
+
+message("Include path: $$INCLUDEPATH")
+message("Lib path: $$LIBS")
 
 
 # 工程文件
-
-FORMS += \
-    code/ui/imagetest.ui
-
 SOURCES += \
     code/src/imagetest.cc \
-    code/src/menu.cc
-
+    code/main.cpp
 HEADERS += \
     code/inc/imagetest.h \
-    code/inc/menu.h \
-    code/stdafx.h
+    code/stdafx.h \
+    code/utils/myException.h \
+    code/utils/SpdLogger.h
+
+DISTFILES += \
+    code/ui/image.png
+
+RESOURCES += \
+    code/ui/res.qrc
+
+
+message("================== End Generate =========================")

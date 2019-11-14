@@ -2,12 +2,22 @@
 #define IMAGETEST_H
 
 #include "../stdafx.h"
-#include "ui_imagetest.h"
+#include <QMainWindow>
 
 
-namespace Ui {
-class ImageTest;
-}
+class QAction;
+class QListWidget;
+class QMenu;
+class QTextEdit;
+
+/**
+ * @class   ImageTest imagetest.h code\inc\imagetest.h
+ *
+ * @brief   An image test.
+ *
+ * @author  IRIS_Chen
+ * @date    2019/11/14
+ */
 
 class ImageTest : public QMainWindow
 {
@@ -15,28 +25,20 @@ class ImageTest : public QMainWindow
 
 public:
     explicit ImageTest(QWidget *parent = nullptr);
-    ~ImageTest();
+
+private slots:
+    void about();
+    void SystemInfo();  
 
 private:
-    Ui::ImageTest *ui;
-
-    Menu *menu_;
-
-    // 设置窗口内容
-    // Menu
-
-private:
-    // function
-    void Init();
-    void Show();
-
-    void CreateMenubar(void);   // 创建菜单栏
-    void CreateLayout(void);  // 布局窗口
+    void CreateMenubar();
+    void CreateDockWindows();   
 
 
-    void
+    QTextEdit *mTextEdit_;
+    QListWidget *mCustomerWindow_;
 
-
+    QMenu *mMenu_;
 
 };
 
