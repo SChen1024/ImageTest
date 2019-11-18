@@ -98,18 +98,19 @@ message("Lib path: $$LIBS")
 # 工程文件
 SOURCES += \
     code/src/imagetest.cc \
-    code/main.cpp
+    code/main.cpp \
+    code/utils/clabel.cc
 HEADERS += \
     code/inc/imagetest.h \
     code/stdafx.h \
     code/utils/myException.h \
-    code/utils/SpdLogger.h
+    code/utils/SpdLogger.h \
+    code/utils/clabel.h
 
 DISTFILES += \
     code/ui/image.png
 
 RESOURCES += \
     code/ui/res.qrc
-
 
 message("================== End Generate =========================")

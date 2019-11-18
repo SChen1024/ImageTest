@@ -47,6 +47,9 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="code\utils\clabel.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="code\src\imagetest.cc">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -55,20 +58,35 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="code\utils\SpdLogger.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <QtMoc Include="code\utils\clabel.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
     <QtMoc Include="code\inc\imagetest.h">
       <Filter>Header Files</Filter>
     </QtMoc>
+    <ClInclude Include="code\utils\myException.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <CustomBuild Include="code\stdafx.h">
       <Filter>Header Files</Filter>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
+    
+    
+    
+    
     <CustomBuild Include="debug\moc_predefs.h.cbt">
       <Filter>Generated Files</Filter>
     </CustomBuild>
     <CustomBuild Include="release\moc_predefs.h.cbt">
       <Filter>Generated Files</Filter>
     </CustomBuild>
+    
+    
     <ClCompile Include="code\stdafx.h.cpp">
       <Filter>Generated Files</Filter>
     </ClCompile>
@@ -80,7 +98,6 @@
     <QtRcc Include="code\ui\res.qrc">
       <Filter>Resource Files</Filter>
     </QtRcc>
-    <None Include="code\ui\image.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="code\ui\image.png">
@@ -88,6 +105,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include=".\ImageTest_resource.rc" />
+    <ResourceCompile Include="D:\Data\Project\ImageTest\Project\ImageTest\ImageTest_resource.rc" />
   </ItemGroup>
 </Project>

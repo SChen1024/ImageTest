@@ -20,8 +20,12 @@ ImageTest::ImageTest(QWidget *parent) :
     CreateMenubar();
     CreateDockWindows();
 
-    setWindowTitle(tr("Dock Widgets"));
+    setCentralWidget(mTextEdit_);
+    CreateMain();
 
+    // this->setMinimumSize(QSize(960, 540));  // 设置 窗口尺寸
+
+    setWindowTitle(tr("Image Test Lab"));
     setUnifiedTitleAndToolBarOnMac(true);
 }
 
@@ -149,5 +153,52 @@ void ImageTest::CreateDockWindows(void)
     dock->setWidget(mCustomerWindow_);
     addDockWidget(Qt::RightDockWidgetArea, dock);
     mMenu_->addAction(dock->toggleViewAction());
+
+}
+
+void ImageTest::CreateMain()
+{
+    mTextEdit_->clear();
+
+    QTextCursor cursor(mTextEdit_->textCursor());
+    cursor.movePosition(QTextCursor::Start);
+    QTextFrame *topFrame = cursor.currentFrame();
+    QTextFrameFormat topFrameFormat = topFrame->frameFormat();
+    topFrameFormat.setPadding(16);
+    topFrame->setFrameFormat(topFrameFormat);
+
+    QTextCharFormat textFormat;
+    QTextCharFormat boldFormat;
+    boldFormat.setFontWeight(QFont::Bold);
+    QTextCharFormat italicFormat;
+    italicFormat.setFontItalic(true);
+
+    QTextTableFormat tableFormat;
+    tableFormat.setBorder(1);
+    tableFormat.setCellPadding(16);
+    tableFormat.setAlignment(Qt::AlignRight);
+    cursor.insertTable(1, 1, tableFormat);
+    cursor.insertText("The Firm", boldFormat);
+    cursor.insertBlock();
+    cursor.insertText("321 City Street", textFormat);
+    cursor.insertBlock();
+    cursor.insertText("Industry Park");
+    cursor.insertBlock();
+    cursor.insertText("Some Country");
+    cursor.setPosition(topFrame->lastPosition());
+    cursor.insertText(QDate::currentDate().toString("d MMMM yyyy"), textFormat);
+    cursor.insertBlock();
+    cursor.insertBlock();
+    cursor.insertText("Dear ", textFormat);
+    cursor.insertText("NAME", italicFormat);
+    cursor.insertText(",", textFormat);
+    for (int i = 0; i < 3; ++i)
+        cursor.insertBlock();
+    cursor.insertText(tr("Yours sincerely,"), textFormat);
+    for (int i = 0; i < 3; ++i)
+        cursor.insertBlock();
+    cursor.insertText("The Boss", textFormat);
+    cursor.insertBlock();
+    cursor.insertText("ADDRESS", italicFormat);
 
 }

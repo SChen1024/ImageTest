@@ -33,6 +33,7 @@ private slots:
 private:
     void CreateMenubar();
     void CreateDockWindows();   
+    void CreateMain();  // 主要显示窗体
 
 
     QTextEdit *mTextEdit_;
